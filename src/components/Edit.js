@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+
 function Edit(props) {  // Add 'props' as a parameter
     const [name, setName] = useState("");
     const [age, setAge] = useState("");
@@ -9,6 +10,7 @@ function Edit(props) {  // Add 'props' as a parameter
     useEffect(() => {
         // Fetch the student details based on ID
         const id = props.match.params.id;
+        console.log("Student ID:", id);
         axios.get(`http://localhost:8070/student/get/${id}`)
             .then((res) => {
                 const student = res.data.student;
@@ -18,16 +20,18 @@ function Edit(props) {  // Add 'props' as a parameter
             })
             .catch((err) => {
                 alert(err.message);
+                console.log(console.error());
             });
     }, [props.match.params.id]);
 
     function sendData(e) {
         e.preventDefault();
+        console.log("Form submitted");
         const id = props.match.params.id;
         const updatedStudent = {
             name,
             age,
-            gender
+            gender,
         };
 
         axios.put(`/student/update/${id}`, updatedStudent)

@@ -20,6 +20,7 @@ export default function AllStudents() {
   const deleteStudent = (id) => {
     axios.delete(`http://localhost:8070/student/delete/${id}`)
       .then(response => {
+        alert("Student Deleted")
         console.log(response.data);
         // Remove the deleted student from the state
         setStudents(students.filter(student => student._id !== id));
@@ -46,7 +47,7 @@ export default function AllStudents() {
               <td>{student.age}</td>
               <td>{student.gender}</td>
               <td>
-                <a className="btn btn-warning" href={`/update/${student._id}`}>
+                <a className="btn btn-warning" href={`/edit/${student._id}`}>
                   <i className="fas fa-edit"></i> &nbsp;Edit
                 </a>
                 &nbsp;
