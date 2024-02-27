@@ -6,7 +6,7 @@ import AllStudents from './components/AllStudents';
 import { Route, BrowserRouter, Routes} from 'react-router-dom';
 
 
-//hi
+
 
 function App() {
   //const global = useGlobalContext ();
